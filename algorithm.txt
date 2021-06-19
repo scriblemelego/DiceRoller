@@ -1,6 +1,3 @@
-10d12
-
-first check for whitespace, loop if found
 
 check char for isdigit
 	if true add char to charInts array, loop
@@ -9,3 +6,6 @@ check char for isdigit
 		if false check for an operator
 			if true convert charInts into sides value and update flag, loop
 			if false return error, loop
+
+Result of 2d6 + 4: 9
+Individual Dice Results: 2, 3
