@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 using namespace std;
 class Dice;
 
@@ -17,6 +18,9 @@ public:
 	int getResult() { return result; }
 
 	int roll();
+	int roll(int s);
 	void rollVoid();
 	void displayRoll();
+	vector<int> rollMultiple(int amount);
+	vector<int> rollMultiple(int amount, int s);
 };
