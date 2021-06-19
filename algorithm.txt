@@ -1,0 +1,11 @@
+10d12
+
+first check for whitespace, loop if found
+
+check char for isdigit
+	if true add char to charInts array, loop
+	if false check for 'd'
+		if true convert charInts into amount value and update flag, loop
+		if false check for an operator
+			if true convert charInts into sides value and update flag, loop
+			if false return error, loop
