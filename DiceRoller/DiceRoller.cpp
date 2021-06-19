@@ -12,20 +12,29 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 int main()
 {
 	Dice dice;
-	int amount = 0, sides = 0, modifier = 0, result = 0;
+	int amount = 0, sides = 0, modifier = 0;
 	char sign = ' ';
 	string input;
-
+	vector<int> results;
+	
 	do {
 		//Input Gathering
 		cout << "Enter a roll: ";
 		getline(cin, input);
 
-		//Input Analysis
-		if(input != "stop")
-		diceInputAnalyzer(input, amount, sides, modifier, sign);
+		if (input != "stop") {
+			//Input Analysis
+			diceInputAnalyzer(input, amount, sides, modifier, sign);
 
+			//Rolling
+			results = dice.rollMultiple(amount, sides);
 
+			//Display Results
+			for (int i = 0; i < amount; ++i)
+				cout << results[i] << " ";
+			cout << endl;
+			results.clear();
+		}
 	} while (input != "stop");
 }
 
@@ -94,3 +103,4 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 		}
 	}
 }
+
