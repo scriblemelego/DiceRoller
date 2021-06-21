@@ -57,11 +57,8 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 
 	for (int i = 0; i < size; ++i)
 	{
-		//Checks if space or other whitespace to skip
-		if (isblank(input[i])) {}
-
 		//Checks for digit chars to convert to ints
-		else if (isdigit(input[i]))
+		if (isdigit(input[i]))
 		{
 			charInts.push_back(input[i]);
 			++size2;
@@ -73,7 +70,7 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 			for (int j = 0; j < size2; ++j)
 			{
 				charInts[j] -= '0';
-				amount += static_cast<int>(charInts[j]) * pow(10, (size2 - 1) - j);
+				amount += (int)charInts[j] * pow(10, (size2 - 1) - j);
 			}
 			charInts.clear();
 			size2 = 0;
@@ -88,7 +85,7 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 			for (int j = 0; j < size2; ++j)
 			{
 				charInts[j] -= '0';
-				sides += static_cast<int>(charInts[j]) * pow(10, (size2 - 1) - j);
+				sides += (int)charInts[j] * pow(10, (size2 - 1) - j);
 			}
 			charInts.clear();
 			size2 = 0;
@@ -101,7 +98,7 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 		for (int j = 0; j < size2; ++j)
 		{
 			charInts[j] -= '0';
-			sides += static_cast<int>(charInts[j]) * pow(10, (size2 - 1) - j);
+			sides += (int)charInts[j] * pow(10, (size2 - 1) - j);
 		}
 	}
 	//Stores modifier chars as an int if there's an operator
@@ -110,7 +107,7 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 		for (int j = 0; j < size2; ++j)
 		{
 			charInts[j] -= '0';
-			modifier += static_cast<int>(charInts[j]) * pow(10, (size2 - 1) - j);
+			modifier += (int)charInts[j] * pow(10, (size2 - 1) - j);
 		}
 	}
 }
@@ -128,19 +125,15 @@ int tallyAndModify(vector<int> results, int modifier, char sign)
 	case '+':
 		total += modifier;
 		break;
-
 	case '-':
 		total -= modifier;
 		break;
-
 	case '*':
 		total *= modifier;
 		break;
-
 	case '/':
 		total /= modifier;
 		break;
-
 	case ' ':
 		break;
 	}
