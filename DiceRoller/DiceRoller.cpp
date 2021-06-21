@@ -1,3 +1,7 @@
+/***********************************************************************************************************************
+Simple dice rolling program with a relatively smart input. 
+User should roll with the format [Amount]d[Max Roll] with an optional arithmatic operator and modifier value (e.g + 7).
+************************************************************************************************************************/
 #include "Dice.h"
 #include <iostream>
 #include <string>
@@ -42,17 +46,18 @@ int main()
 			cout << "-------------------------\n";
 			for (int i = 0; i < amount - 1; ++i)
 				cout << results[i] << ", ";
-			if (amount > 0)
+			if (amount > 0) //Fixes a crash if the user tries to roll 0 dice
 			cout << results[amount - 1] << endl << endl;
 
 		}
 	} while (input != "stop");
 }
 
+//Takes the string the user entered and picks out the number chars to be converted to int and assigned to their appropriate variables
 void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifier, char& sign)
 {
 	vector<char> charInts;
-	int size = input.size(), size2 = 0, intCast = 0;
+	int size = input.size(), size2 = 0;
 	bool extra = false, d = false;
 
 	for (int i = 0; i < size; ++i)
@@ -74,7 +79,7 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 			}
 			charInts.clear();
 			size2 = 0;
-			d = true;
+			d = true; //Prevents the program from crashing if the user enters an operator symbol before the d
 		}
 		//Looks for an operator to determine whether the extra section is necessary
 		//and then stores the sides chars as an int
@@ -112,6 +117,7 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 	}
 }
 
+//Adds up the total value of the user's rolls then detects which operator the user used and modifies the total accordingly
 int tallyAndModify(vector<int> results, int modifier, char sign)
 {
 	int size = results.size();
@@ -125,15 +131,19 @@ int tallyAndModify(vector<int> results, int modifier, char sign)
 	case '+':
 		total += modifier;
 		break;
+
 	case '-':
 		total -= modifier;
 		break;
+
 	case '*':
 		total *= modifier;
 		break;
+
 	case '/':
 		total /= modifier;
 		break;
+
 	case ' ':
 		break;
 	}
