@@ -1,3 +1,7 @@
+/***********************************************************************************************************************
+Simple dice rolling program with a relatively smart input. 
+User should roll with the format [Amount]d[Max Roll] with an optional arithmatic operator and modifier value (e.g + 7).
+************************************************************************************************************************/
 #include "Dice.h"
 #include <iostream>
 #include <string>
