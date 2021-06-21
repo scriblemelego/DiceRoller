@@ -9,3 +9,7 @@ check char for isdigit
 
 Result of 2d6 + 4: 9
 Individual Dice Results: 2, 3
+
+Result of 2d6+4: 9
+----------------------
+2, 3, 6, 2, 1
