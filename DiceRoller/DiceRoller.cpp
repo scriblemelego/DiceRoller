@@ -70,7 +70,7 @@ void diceInputAnalyzer(const string& input, int& amount, int& sides, int& modifi
 		}
 		//Looks for the d to determine where dice amount entry ends and where dice value entry begins
 		//and then stores the amount chars as an int
-		else if (input[i] == 'd' || input[i] == 'D')
+		else if (input[i] == 'd' && d == false || input[i] == 'D' && d == false)
 		{
 			for (int j = 0; j < size2; ++j)
 			{
